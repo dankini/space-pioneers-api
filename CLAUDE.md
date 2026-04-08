@@ -2,18 +2,12 @@
 
 ## Project Overview
 
-This is the Human Spaceflight API - a Django-based API for tracking human spaceflight data including missions, astronauts, agencies, and EVAs.
+This is the Space Pioneers API - a Django-based API for tracking human spaceflight data including missions, astronauts, agencies, and EVAs.
 
 ## Git Conventions
 
-**Follow the standards in [CONTRIBUTING.md](CONTRIBUTING.md):**
+Follow the standards in [CONTRIBUTING.md](CONTRIBUTING.md) for branch naming, commit messages, and PR process.
 
-- **Branches**: Use `feature/`, `fix/`, `chore/`, `refactor/`, `docs/`, `test/`, `style/` prefixes with kebab-case descriptions
-- **Commits**: Use conventional commits format: `type(scope): subject`
-  - Types: `feat`, `fix`, `chore`, `docs`, `refactor`, `test`, `style`, `perf`, `ci`
-  - Scopes: `missions`, `astronauts`, `agencies`, `evas`, `accounts`, `common`, `deps`, `docker`, `templates`, `models`, `views`
-  - Use imperative mood, no capital, no period
-- **Do not** use empty scope parentheses like `chore():` - either include a scope or omit parentheses entirely
 - **Before committing**: Always ask whether to commit to main or create a branch, and include a recommendation based on the change type
 
 ## Tech Stack
@@ -28,7 +22,14 @@ This is the Human Spaceflight API - a Django-based API for tracking human spacef
 - 4 spaces indentation (Python)
 - 88 character line length (Black formatter)
 - 2 spaces indentation (HTML templates)
+- Prefer class-based views over function-based views
+
+## Django Guidelines
+
+- Always include migrations in the same commit as model changes
+- Never run `migrate` automatically — flag migrations for the user to review first
+- Ask before adding new dependencies
 
 ## Testing
 
-Run tests before committing: `python manage.py test`
+Run tests before committing: `docker-compose exec web python manage.py test`

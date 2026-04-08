@@ -4,7 +4,7 @@
 
 ### Branch Naming Convention
 
-Use descriptive kebab-case names with optional type prefix:
+Use descriptive kebab-case names with a required type prefix:
 
 ```
 <type>/<description>
@@ -27,10 +27,6 @@ docs/api-documentation
 - `docs/` - Documentation only changes
 - `test/` - Adding or updating tests
 - `style/` - Code style/formatting (no logic change)
-
-**For simple changes**, descriptive names without type prefix are acceptable:
-- `rebrand-to-space-pioneers-api`
-- `update-readme`
 
 ### Commit Message Convention
 
@@ -137,6 +133,31 @@ Prefer:
 - No parentheses when scope doesn't apply: `docs:`, `test:`
 - Imperative mood: "add", "fix", "update"
 
+## Local Setup
+
+### Prerequisites
+- Docker and Docker Compose
+
+### Running the project
+
+```bash
+# Build and start all services
+docker-compose up --build
+
+# Run database migrations
+docker-compose exec web python manage.py migrate
+
+# Run tests
+docker-compose exec web python manage.py test
+```
+
+## Database Migrations
+
+- Always include migrations in the same commit as model changes
+- Never edit existing migrations — create new ones instead
+- Run `python manage.py makemigrations` after changing models
+- Review generated migrations before committing
+
 ## Pull Request Process
 
 1. **Create a feature branch from main**
@@ -190,6 +211,4 @@ Prefer:
 
 ## Questions?
 
-If you have questions about contributing, feel free to:
-- Open an issue
-- Reach out at info@spacepioneersapi.com
+If you have questions about contributing, feel free to [open an issue](../../issues).
